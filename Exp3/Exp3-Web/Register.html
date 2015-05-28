@@ -1,0 +1,175 @@
+<html>
+<head>
+
+<title>注册页面</title>
+
+<style type="text/css">
+
+body
+{
+	font-family:"宋体";
+	font-size:25px;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+
+#container
+{
+	position:relative;
+	margin:1px 0pt 0px 100pt;
+	width:500px;
+	text-align:center;
+	background-color:#ffffff;	
+}
+
+#banner 
+{
+    background-color:#ddeeff;
+    width:500px;
+}
+
+#content 
+{ 
+    width:500px;
+    float:left;
+    font-size:20px;
+}
+
+#footer 
+{
+    width:500px;
+    text-align:center;
+    margin:0px;
+    font-size:15px;    
+}
+
+</style>
+
+<script type="text/javascript">
+
+function aClock() {
+    var now = new Date( );
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds(); 
+    var timeStr = hours;
+    timeStr += ((minutes < 10) ? ":0" : ":") + minutes;
+    timeStr += ((seconds < 10) ? ":0" : ":") + seconds;
+    timeStr += (hours >= 12) ? " P.M." : " A.M.";
+    setTimeout ("aClock()", 1000);
+    document.getElementById("date").innerHTML = "今天是" + year + "年" + month + "月" + day + "日" + "&nbsp;&nbsp;&nbsp;&nbsp;现在是" + timeStr;
+}  
+
+function check() {
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+    var birth = document.getElementById("birth").value;
+    var tel = document.getElementById("tel").value;
+    var email = document.getElementById("email").value;
+    var hobby = document.getElementById("hobby").value;
+    var prof = document.getElementById("prof").value;
+    var mai = document.getElementById("email").value.indexOf("@");
+    var dns = document.getElementById("email").value.indexOf(".");
+    
+    if(name == "") {
+        alert("用户名不能为空!");
+    } else if(age == "") { 
+        alert("年龄不能为空!");
+    } else if(age < 0 || age > 150) { 
+        alert("请输入合法的年龄!");
+    } else if(birth == "") { 
+        alert("出生地不能为空!");
+    } else if(tel == "") {
+        alert("电话不能为空!");
+    } else if((tel.length != 8) && (tel.length != 11)) {
+        alert("请输入正确的电话号码!");
+    } else if(email == "") { 
+        alert("Email地址不能为空!");
+    } else if (mai < 1 || dns - mai < 3) 
+        alert("请输入正确的Email地址!");
+    else {
+        var nw = open("a.htm", "nwin", "width = 500, height = 200");
+        nw.focus();
+        nw.document.write("欢迎登陆，" + name + "！<br/>");
+        nw.document.write("您的个人信息：<br/>");
+        nw.document.write("您今年" + age + "岁，<br/>");
+        nw.document.write("出生地是" + birth + "，<br/>");
+        nw.document.write("兴趣爱好是" + hobby + "，<br/>");
+        nw.document.write("专业是" + prof + "，<br/>");
+        nw.document.write("Email是" + email + "，<br/>");
+        nw.document.write("联系电话是" + tel + "。<br/>");
+    }
+}
+
+</script>  
+ 
+</head>
+<body onLoad = "aClock()">
+<div id = "container">
+
+<div id = "banner">
+<img src = "banner.jpeg", height="250px", width="500px">
+<div id = "date"></div>
+</div>
+
+<div id = "content">
+<form>
+<br/>
+<center><h1>个人信息</h1></center>
+<center><b>请注意：字段前加*号的为必须输入的内容。</b></center>
+<br/>
+<center>*&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;名：
+<input type="text" name="name" id="name" size="20">
+<br/>
+*&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;龄：
+<input type="text" name="age" id="age" size="20">
+<br/>
+(请输入0-150间的数字)
+</center>
+<br/>
+<center>
+*&nbsp;&nbsp;出生地：
+<input type="text" name="birth" id="birth" size="35">
+<br/>
+兴趣爱好： 
+<input type="text" name="hobby" id="hobby" size="35">
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;专&nbsp;&nbsp;&nbsp;业：
+<input type="text" name="prof" id="prof" size="35">
+<br/>
+</center>
+<br/>
+<center>
+*Email地址：
+<input type="text" name="email" id="email" size="35">
+<br/>
+*&nbsp;&nbsp;联系电话：
+<input type="text" name="tel" id="tel" size="35">
+<br/>
+(请输入8位或11位数字)
+</center>
+<br/>
+<br/>
+<center>
+<input type="submit" onclick="check()" value="提交信息">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="reset" value="清空">
+</center>
+</form>
+</div>
+
+<div id="footer">
+<br/>
+<b>Powered By <a href = "http://zhrmoe.iflab.org/" title = "ZHRMoe Studio">ZHRMoe</a>, 2015.</b>
+</br>
+</br>
+</br>
+</div>
+</div>
+
+</body>
+</html>
